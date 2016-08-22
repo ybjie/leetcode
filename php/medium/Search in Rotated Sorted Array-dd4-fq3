@@ -18,13 +18,13 @@ function searchInRoSorted($arr_input,$target){
 		$mid = ceil($end+$start/2);
 		if($arr_input[$mid]==$target){
 			return $mid;
-		}elseif($arr_input[$mid]>$arr_input[$start]){
+		}elseif($arr_input[$mid]>=$arr_input[$start]){
 			if($arr_input[$mid]>$target){
 				$end = $mid-1;
 			}else{
 				$start = $mid+1;
 			}
-		}elseif($arr_input[$mid]<$arr_input[$start]){
+		}elseif($arr_input[$mid]<$arr_input[$end]){
 			if($arr_input[$mid]<$target){
 				$start = $mid+1;
 			}else{
