@@ -1,0 +1,36 @@
+<?php
+/*
+*在rotated sorted  array中进行查找
+*题目就是，已经排好序的数组，但是我们在某个地方进行了一下截取，然后从左边拿到右边
+*在这个我们处理过的数组中进行排序
+*基本四星还是二分查找
+*判断的一句是我们截取的那部分是一大半还是一小半
+*具体思路看这里
+*http://fisherlei.blogspot.com/2013/01/leetcode-search-in-rotated-sorted-array.html
+*
+*/
+
+function searchInRoSorted($arr_input,$target){
+	$len = count($arr_input);
+	$start = 0;
+	$end = $count-1;
+	while($start<=$end){
+		$mid = ceil($end+$start/2);
+		if($arr_input[$mid]==$target){
+			return $mid;
+		}elseif($arr_input[$mid]>$arr_input[$start]){
+			if($arr_input[$mid]>$target){
+				$end = $mid-1;
+			}else{
+				$start = $mid+1;
+			}
+		}elseif($arr_input[$mid]<$arr_input[$start]){
+			if($arr_input[$mid]<$target){
+				$start = $mid+1;
+			}else{
+				$end = $mid-1;
+			}
+		}
+	}
+}
+?>
